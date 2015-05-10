@@ -1,0 +1,108 @@
+Request for post code:
+3000
+
+Looks for lat/lons within that post code:
+- If found, combines them and predicts based on those
+
+Otherwise:
+- Looks for closest lat/lons around and combines them, then predicts based on those
+  Combine them with a distance from the starting point (weight)
+
+
+## Classes:
+- (Persisted) Measurement
+  * attributes:
+    str condition, time
+    float temperature, precipitation, wind_direction, wind_speed
+
+  * methods: 
+    setters/getters
+    getByDate(str date) -> Measurement []
+    format_wind_direction() -> str
+
+- (Persisted) WeatherStation has_many: Measurement
+  * attributes:
+    str id, last_updated
+    float lat, lon
+    int postal_code
+
+  * methods:
+    setters/getters
+
+- Location
+  * attributes:
+    int postal_code
+  * methods:
+    find_coordinates()
+    get_weather_stations() 
+    find_closest_stations() 
+    STATIC find_postal_code(lat, lon) -> postalCode
+
+- Prediction
+  * attributes:
+    int timeUntil
+    WeatherStation [] stations
+    hashMap data
+    Predictor [] predictors // filled on initialization
+
+  * methods:
+    predict() -> called on initialization, fills data with stuff from the predictors
+      predictors.each |predictor|
+        predictor.predict(Prediction)
+
+- PredictorFactory
+    createPredictor("weather_feature")
+      -> RainfallPredictor
+      -> WindSpeedPredictor
+
+- Predictor
+  * attributes:
+    str weather_feature (ex: rainfall_amount)
+
+  * methods
+    predict(Prediction)
+      adds [weather_feature] => [probability: , value: ] to the data hashMap
+
+## Controllers:
+- DataController
+  
+  ROUTE: (/ all locations)
+    Location.get
+    ## Format and show
+
+  ROUTE: (postal_code, date)
+    station = WeatherStation.get(postal_code)
+    stations.getMeasurements ...
+    ## Format and show
+
+  ROUTE: (location_id, date)
+    Measurement.getByDate(date) -> Measurement[]
+    ## Format and show
+
+
+- PredictionController
+
+  ROUTE: (lat, lon)
+    Location.new(Location.findPostalCode(lat, lon))
+    Location.find_closest_stations()
+    Prediction.new(weather_stations)
+    --> Show Prediction
+
+  ROUTE: (postal_code)
+    Location.new(postal_code)
+    Location.find_closest_stations()
+    Prediction.new(weather_stations)
+    --> Show Prediction
+
+ForecastSource
+  str api_key
+  parse_measurements()
+
+## Tasks
+  Get_Locations_From_BOM
+  Scheduler
+
+
+## External
+- Google Geocoding Service (used by location)
+

@@ -1,0 +1,1 @@
+# config.forecast.key = 811a6d564ecf0a130c1becb4ec00ee6c

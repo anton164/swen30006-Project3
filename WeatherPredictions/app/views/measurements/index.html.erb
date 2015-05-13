@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Measurements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Condition</th>
+      <th>Time</th>
+      <th>Precitipation</th>
+      <th>Wind direction</th>
+      <th>Wind speed</th>
+      <th>Temperature</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @measurements.each do |measurement| %>
+      <tr>
+        <td><%= measurement.condition %></td>
+        <td><%= measurement.time %></td>
+        <td><%= measurement.precitipation %></td>
+        <td><%= measurement.wind_direction %></td>
+        <td><%= measurement.wind_speed %></td>
+        <td><%= measurement.temperature %></td>
+        <td><%= link_to 'Show', measurement %></td>
+        <td><%= link_to 'Edit', edit_measurement_path(measurement) %></td>
+        <td><%= link_to 'Destroy', measurement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Measurement', new_measurement_path %>

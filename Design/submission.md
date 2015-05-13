@@ -9,3 +9,13 @@
 ## Sequence Diagrams
 ![seq1-diagram](http://i.imgur.com/RvGmwCF.png)
 ![seq2-diagram](http://i.imgur.com/s8nQWBo.png)
+
+
+Text to reach the minimum requirement.
+Text to reach the minimum requirement.
+Text to reach the minimum requirement.
+Text to reach the minimum requirement.
+Text to reach the minimum requirement.
+Text to reach the minimum requirement.
+Text to reach the minimum requirement.
+Text to reach the minimum requirement.

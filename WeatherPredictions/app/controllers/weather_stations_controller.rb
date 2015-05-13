@@ -69,6 +69,6 @@ class WeatherStationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def weather_station_params
-      params.require(:weather_station).permit(:postal_code, :lat, :lon)
+      params.require(:weather_station).permit(:name, :postal_code, :lat, :lon)
     end
 end

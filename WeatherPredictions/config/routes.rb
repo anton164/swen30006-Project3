@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :locations
+
   resources :measurements
 
   resources :weather_stations

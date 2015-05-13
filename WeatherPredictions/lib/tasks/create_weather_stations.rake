@@ -8,10 +8,13 @@ namespace :app do
       table.css("tbody tr th").each{|th| 
         location_page = Nokogiri::HTML(open("http://www.bom.gov.au/" + th.css('a')[0]["href"]))
         row = location_page.css("table.stationdetails tr")
+        lat = row.css("td:eq(4)").text.gsub("Lat: ", "").strip!.to_f
+        lon = row.css("td:eq(5)").text.gsub("Lon: ", "").strip!.to_f
         WeatherStation.create({ 
           'name' => th.text,
-          'lat' => row.css("td:eq(4)").text.gsub("Lat: ", "").strip!.to_f,
-          'lon' => row.css("td:eq(5)").text.gsub("Lon: ", "").strip!.to_f
+          'lat' => lat,
+          'lon' => lon,
+          'postal_code' => Location.find_postal_code(lat, lon)
         })
       }
     } 

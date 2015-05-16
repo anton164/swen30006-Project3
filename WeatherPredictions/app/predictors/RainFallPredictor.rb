@@ -7,6 +7,8 @@ class RainFallPredictor < RainFallPredictor
 	end
 
 	def predict _p
-		
+		_p.stations.each do |station|
+			
+		end
 	end
 end

@@ -8,12 +8,19 @@ class Predictor
 	end
 
 	def predict _p
-		p.predictors.each do |preditor|
+=begin
+p.predictors.each do |preditor|
 			
 		end#end of predictor calls
+=end
+
 	end
+
+	private 
 
 	def regress
 
 	end
+
+	sort
 end	

@@ -7,14 +7,16 @@ class Predictor
 		@weather_feature = _name
 	end
 
-	def predict _p
-=begin
-p.predictors.each do |preditor|
+	def predict _p	
+=begin
+		data_points = Array.new
+		if block_given?
+		p.stations.each do |preditor|
 			
 		end#end of predictor calls
 =end
 
-	end
+	enddc cd cd cd cd 
 
 	private 
 

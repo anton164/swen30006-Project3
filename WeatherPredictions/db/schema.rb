@@ -11,29 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513013132) do
+ActiveRecord::Schema.define(version: 20150523095812) do
 
   create_table "measurements", force: :cascade do |t|
     t.string   "condition"
-    t.string   "time"
+    t.datetime "time"
     t.float    "precitipation"
     t.float    "wind_direction"
     t.float    "wind_speed"
     t.float    "temperature"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "weatherstation_id"
   end
+
+  add_index "measurements", ["weatherstation_id"], name: "index_measurements_on_weatherstation_id"
 
   create_table "weather_stations", force: :cascade do |t|
     t.string   "name"
     t.integer  "postal_code"
     t.float    "lat"
     t.float    "lon"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "measurement_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
-
-  add_index "weather_stations", ["measurement_id"], name: "index_weather_stations_on_measurement_id"
 
 end

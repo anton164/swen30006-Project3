@@ -15,6 +15,7 @@ class WeatherStation < ActiveRecord::Base
     end
   end
 
+  #dates must be passed as strings in the form of DD/MM/YYYY
   def get_data_at_date(date)
   	time = Date.parse(date)
   	get_data_at_time(time)
@@ -44,11 +45,6 @@ class WeatherStation < ActiveRecord::Base
 
   def round_to_hour(time)
     extra = time%3600 
-    return time - extra
-  end
-
-  def round_to_day(time)
-    extra = time%86400
     return time - extra
   end
 

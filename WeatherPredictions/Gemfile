@@ -30,7 +30,10 @@ gem 'nokogiri'
 gem 'rufus-scheduler'
 
 # Font-awesome for icons
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+
+# Use google geocoder
+gem 'geocoder'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -52,3 +55,6 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'forecast_io'
+
+gem 'tzinfo-data'

@@ -9,4 +9,7 @@ class Location
       puts "Warning: Skipped '" + address.to_s + "', can't extract postcode using GeoCoder"
     end
   end
+  def self.find_coordinates(postal_code)
+    return Geocoder.coordinates(postal_code.to_s + " VIC AUSTRALIA")
+  end
 end

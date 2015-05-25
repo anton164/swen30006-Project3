@@ -18,7 +18,7 @@ namespace :app do
             'lat' => lat,
             'lon' => lon,
             'postal_code' => postal_code,
-            'json_endpoint' => bom_prefix + locpage.css('p.noPrint')[1].css('a')[0]["href"]
+            'json_url' => bom_prefix + locpage.css('p.noPrint')[1].css('a')[0]["href"]
           })
         end
       }

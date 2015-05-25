@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150525062127) do
     t.float    "lon"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "json_endpoint"
+    t.string   "json_url"
   end
 
 end

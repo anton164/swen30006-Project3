@@ -8,20 +8,12 @@ class Predictor
 	end
 
 	def predict _p	
-=begin
-		data_points = Array.new
-		if block_given?
-		p.stations.each do |preditor|
-			
-		end#end of predictor calls
-=end
-
-	enddc cd cd cd cd 
+	end
 
 	private 
 
-	def regress
-
+	def calc_simple_regress arr_points
+		
 	end
 
 	sort

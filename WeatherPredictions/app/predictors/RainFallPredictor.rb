@@ -12,7 +12,7 @@ class RainFallPredictor < Predictor
 			rainfall_points = Array.new
 			weight = 1/station.distance_from_lat_lon
 			station.measurements.each do |measurement|
-				rainfall_points << measurement.rainfall * weight
+				rainfall_points << measurement.percipitation * weight
 			end
 			rainfall_collection_of_points << rainfall_points
 		end
@@ -24,6 +24,7 @@ class RainFallPredictor < Predictor
 	private 
 
 	def regress rainfall_points
+		# first predict over each idividual station
 		rainfall_points.each do |point|
 			#regression work done here
 		end

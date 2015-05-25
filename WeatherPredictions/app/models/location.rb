@@ -1,8 +1,12 @@
 class Location
   def self.find_postal_code(lat, lon)
-    match = Geocoder.address([-36.28,143.33]).match('([0-9]{4}), Australia')
-    if (match.size == 2)
-      return match[1].to_i
+    address = Geocoder.address([lat, lon])
+    match = address.match('(VIC|NSW) ([0-9]{4})')
+    if not match.nil? and match.size == 3
+      puts "Extracted postcode " + match[2] + " from address '" + address.to_s + "'"
+      return match[2].to_i
+    else
+      puts "Warning: Skipped '" + address.to_s + "', can't extract postcode using GeoCoder"
     end
   end
 end

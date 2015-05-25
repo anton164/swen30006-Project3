@@ -10,12 +10,15 @@ namespace :app do
         row = location_page.css("table.stationdetails tr")
         lat = row.css("td:eq(4)").text.gsub("Lat: ", "").strip!.to_f
         lon = row.css("td:eq(5)").text.gsub("Lon: ", "").strip!.to_f
-        WeatherStation.create({ 
-          'name' => th.text,
-          'lat' => lat,
-          'lon' => lon,
-          'postal_code' => Location.find_postal_code(lat, lon)
-        })
+        postal_code = Location.find_postal_code(lat, lon)
+        if not postal_code.nil?
+          WeatherStation.create({ 
+            'name' => th.text,
+            'lat' => lat,
+            'lon' => lon,
+            'postal_code' => postal_code 
+          })
+        end
       }
     } 
   end

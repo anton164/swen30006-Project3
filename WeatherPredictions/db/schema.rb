@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524054759) do
+ActiveRecord::Schema.define(version: 20150525062127) do
 
   create_table "measurements", force: :cascade do |t|
     t.string   "condition"
@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(version: 20150524054759) do
     t.integer  "postal_code"
     t.float    "lat"
     t.float    "lon"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "json_endpoint"
   end
 
 end

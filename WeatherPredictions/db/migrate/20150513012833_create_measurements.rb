@@ -3,7 +3,7 @@ class CreateMeasurements < ActiveRecord::Migration
     create_table :measurements do |t|
       t.string :condition
       t.string :time
-      t.float :precipitation
+      t.float :precitipation
       t.float :wind_direction
       t.float :wind_speed
       t.float :temperature

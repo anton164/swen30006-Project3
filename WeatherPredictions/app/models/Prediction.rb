@@ -1,6 +1,6 @@
 class Prediction
 
-  attr_reader :period, :stations
+  attr_reader :period, :stations, :now
   attr_accessor :data
 
   def initialize(weather_stations, period, predictors)
@@ -11,6 +11,7 @@ class Prediction
     predictors.each { |predictor| 
       @predictors << PredictorFactory.create(predictor)
     }
+    @now = Time.new.to_i
   end
 
   def predict

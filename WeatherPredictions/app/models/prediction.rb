@@ -3,10 +3,11 @@ class Prediction
   attr_reader :period, :stations, :now
   attr_accessor :data
 
-  def initialize(weather_stations, period, predictors)
+  def initialize(coordinates, weather_stations, period, predictors)
     @stations = weather_stations
     @period = period
     @data = {}
+    @coordinates = coordinates
     @predictors = []
     predictors.each { |predictor| 
       @predictors << PredictorFactory.create(predictor)

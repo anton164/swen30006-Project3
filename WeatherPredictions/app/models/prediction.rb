@@ -6,7 +6,11 @@ class Prediction
   def initialize(coordinates, weather_stations, period, predictors)
     @stations = weather_stations
     @period = period
-    @data = {}
+    @data = {
+      "lattitude" => coordinates[0],
+      "longitude" => coordinates[1]
+      "predictions" => {}
+    }
     @coordinates = coordinates
     @predictors = []
     predictors.each { |predictor| 

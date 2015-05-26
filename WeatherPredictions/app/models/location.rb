@@ -25,6 +25,7 @@ class Location
           :long => @coordinates[1]-buffer..@coordinates[1]+buffer)
         buffer += 0.1
       end
+    end
   end
 
   def self.find_postal_code(lat, lon)

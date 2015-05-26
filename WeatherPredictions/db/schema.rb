@@ -15,25 +15,25 @@ ActiveRecord::Schema.define(version: 20150525062127) do
 
   create_table "measurements", force: :cascade do |t|
     t.string   "condition"
-    t.datetime "time"
+    t.integer  "timestamp"
     t.float    "wind_direction"
     t.float    "wind_speed"
     t.float    "temperature"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.integer  "weatherstation_id"
+    t.integer  "weather_station_id"
     t.float    "precipitation"
   end
 
-  add_index "measurements", ["weatherstation_id"], name: "index_measurements_on_weatherstation_id"
+  add_index "measurements", ["weather_station_id"], name: "index_measurements_on_weatherstation_id"
 
   create_table "weather_stations", force: :cascade do |t|
     t.string   "name"
     t.integer  "postal_code"
     t.float    "lat"
     t.float    "lon"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "json_url"
   end
 

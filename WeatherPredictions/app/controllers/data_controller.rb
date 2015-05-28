@@ -12,7 +12,7 @@ class DataController < ApplicationController
 
   # GET /weather/data/:location_id/:date
   def get_by_id
-    @station = WeatherStation.find(params[:location_id])
+    @station = WeatherStation.where(id: params[:location_id]).take
     if @station.nil?
       respond_to do |format|
         format.html { render :not_found }

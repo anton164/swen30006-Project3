@@ -18,14 +18,15 @@ class DataController < ApplicationController
         format.html { render :not_found }
         format.json { render :not_found }
       end
-    end
-    @date = params[:date]
-    @current_temp = @station.current_temperature
-    @current_cond = @station.current_conditions
-    @measurements = @station.get_date_measurements(@date)
-    respond_to do |format|
-      format.html { render :location_id }
-      format.json { render :location_id }
+    else
+      @date = params[:date]
+      @current_temp = @station.current_temperature
+      @current_cond = @station.current_conditions
+      @measurements = @station.get_date_measurements(@date)
+      respond_to do |format|
+        format.html { render :location_id }
+        format.json { render :location_id }
+      end
     end
   end
 
@@ -37,12 +38,13 @@ class DataController < ApplicationController
         format.html { render :not_found }
         format.json { render :not_found }
       end
-      return
-    end
-    @date = params[:date]
-    respond_to do |format|
-      format.html { render :locations_postal_code }
-      format.json { render :locations_postal_code }
+    else
+      @postal_code = params[:postal_code]
+      @date = params[:date]
+      respond_to do |format|
+        format.html { render :locations_postal_code }
+        format.json { render :locations_postal_code }
+      end
     end
   end
 

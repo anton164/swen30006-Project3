@@ -26,13 +26,13 @@
 
   <tbody>
     <% @stations.each do |station| %>
-      <tr>
+      <tr class="station" id="<%= station.id %>">
         <td><%= station.id %></td>
-        <td><%= station.name %></td>
-        <td><%= Time.at(station.last_update).strftime("%H:%M%P %d-%m-%Y") %></td>
-        <td><%= station.lat %></td>
-        <td><%= station.lon %></td>
-        <td><%= station.measurements.count %></td>
+        <td class="name"><%= station.name %></td>
+        <td class="last_update"><%= Time.at(station.last_measurement.timestamp).strftime("%H:%M%P %d-%m-%Y") %></td>
+        <td class="latitude"><%= station.lat %></td>
+        <td class="longitude"><%= station.lon %></td>
+        <td class="measurement_count"><%= station.measurements.count %></td>
       </tr>
     <% end %>
   </tbody>

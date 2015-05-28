@@ -15,7 +15,7 @@ Rails.application.routes.draw do
         get ':location_id/:date', 
           :constraints => { :date => /\d{2}-\d{2}-\d{4}/ },
           :as => "data_by_id_date",
-          :action => "get_by_location"
+          :action => "get_by_id"
       end
     end
 

@@ -56,6 +56,4 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'forecast_io'
-
 gem 'tzinfo-data'

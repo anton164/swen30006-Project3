@@ -22,21 +22,60 @@
         Authors: Anton, Adam, Theko and Marik
       </div>
     </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/weather/locations">Locations</a></li>
+      </ul>
+    </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
     <form id="lookup">
+      <div class="col-md-6">
+        <h4>Lookup prediction</h4>
+      </div>  
+      <div class="col-md-6">
+        <h4>Lookup past measurements</h4>
+      </div>  
       <div class="col-md-1">
         <strong>Period</strong>
         <div class="input-group">
           <input id="period" type="text" class="form-control" placeholder="10">
         </div>
       </div>
-      <div class="col-md-6">
-        <strong>Address, postal code or lat/long coordinates</strong>
+      <div class="col-md-5">
+        <strong>Address or lat/long coordinates</strong>
         <div class="input-group">
           <input id="address" type="text" class="form-control" placeholder="-37.8152065, 144.963937">
+          <span style="margin-left: 10px;" class="input-group-btn">
+            <input type="submit" class="btn btn-primary">Predict</button>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <strong>Type</strong>
+        <div class="input-group">
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+              Station ID
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+              Postal Code
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <strong>Date</strong>
+        <input id="address" type="text" class="form-control" placeholder="03-06-2015">
+        <strong>Query</strong>
+        <div class="input-group">
+          <input id="address" type="text" class="form-control" placeholder="56">
           <span style="margin-left: 10px;" class="input-group-btn">
             <input type="submit" class="btn btn-primary">Predict</button>
           </span>

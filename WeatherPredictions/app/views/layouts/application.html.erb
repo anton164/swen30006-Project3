@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WeatherPredictions</title>
+  <title>Weather Predictions for SWEN30006</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+<div class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <div class="navbar-brand">
+        Authors: Anton, Adam, Theko and Marik
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>

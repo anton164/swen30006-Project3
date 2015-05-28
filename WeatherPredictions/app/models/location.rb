@@ -1,6 +1,6 @@
 class Location
 
-  attr_reader :coordinates
+  attr_reader :coordinates, :postal_code, :city
 
   def initialize (postal_code: nil, coordinates: nil)
     if not coordinates.nil?
@@ -10,6 +10,7 @@ class Location
       @postal_code = postal_code
       @coordinates = self.class.find_coordinates(postal_code)
     end
+    @city = Geocoder.search(@coordinates)[0].city
   end
 
   def get_weather_stations
@@ -30,14 +31,7 @@ class Location
   end
 
   def self.find_postal_code(lat, lon)
-    address = Geocoder.address([lat, lon])
-    match = address.match('(VIC|NSW) ([0-9]{4})')
-    if not match.nil? and match.size == 3
-      puts "Extracted postcode " + match[2] + " from address '" + address.to_s + "'"
-      return match[2].to_i
-    else
-      puts "Warning: Skipped '" + address.to_s + "', can't extract postcode using GeoCoder"
-    end
+    return Geocoder.search([lat, lon])[0].postal_code.to_i
   end
 
   def self.find_coordinates(postal_code)

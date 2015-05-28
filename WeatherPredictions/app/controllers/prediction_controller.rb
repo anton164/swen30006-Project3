@@ -1,14 +1,12 @@
 class PredictionController < ApplicationController
-
+  # layout "prediction/show"
   # GET /weather/prediction/:postal_code/:period
   def get_by_postal_code
     loc = Location.new(postal_code: params[:postal_code])
     weather_stations = loc.get_weather_stations
-    p = Prediction.new(loc.coordinates, weather_stations, params[:period].to_i, [:rainfall])
-    p.predict
-    puts "PREDICTION"
-    puts p.data
-    ## Output based on p.data
+    predictions = Prediction.new(loc.coordinates, weather_stations, params[:period].to_i, [:rainfall])
+    predictions.predict
+    render_predictions(predictions, loc)
   end
 
   # GET /weather/prediction/:lat/:long/:period
@@ -17,12 +15,20 @@ class PredictionController < ApplicationController
     weather_stations = loc.get_weather_stations
     p = Prediction.new(loc.coordinates, weather_stations, params[:period].to_i, [:rainfall])
     p.predict
-    puts "PREDICTION"
-    puts p.data
-    ## Output based on p.data
+    render_predictions(p.data, loc)
   end
 
   private
+    def render_predictions(predictions, loc)
+      @data = predictions.data
+      @now = predictions.now
+      @loc = loc
+      puts @data
+        respond_to do |format|
+          format.html { render :show }
+          format.json { render :show }
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
       params.require(:location).permit(:postal_code, :lat, :long, :period)

@@ -43,9 +43,9 @@ class PredictionController < ApplicationController
       @now = predictions.now
       @loc = loc
       puts @data
-        respond_to do |format|
-          format.html { render :show }
-          format.json { render :show, data: prepare_data(@data)}
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render :show, data: prepare_data(@data)}
       end
     end
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -2,6 +2,12 @@ class DataController < ApplicationController
 
   # GET /weather/locations/
   def get_locations
+    @date = Time.now.strftime("%d-%m-%Y")
+    @locations = WeatherStation.all
+    respond_to do |format|
+      format.html { render :locations }
+      format.json { render :locations }
+    end
   end
 
   # GET /weather/data/:location_id/:date

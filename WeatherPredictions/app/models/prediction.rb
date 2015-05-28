@@ -7,7 +7,7 @@ class Prediction
     @stations = weather_stations
     @period = period
     @data = {
-      "lattitude" => coordinates[0],
+      "latitude" => coordinates[0],
       "longitude" => coordinates[1],
       "predictions" => {}
     }

@@ -14,17 +14,18 @@ class Location
 
   def get_weather_stations
     ## First see if any weather_stations are in the postal code
-    weather_stations = WeatherStation.where(:postal_code => @postal_code)
+    weather_stations = WeatherStation.where(:postal_code => @postal_code).to_a
     if (weather_stations.size > 0)
       return weather_stations
     else
       ## Look for other weather_stations in close proximity
       buffer = 0.1
       while (weather_stations.size < 2)
-        weather_stations = WeatherStation.where(:lat => @coordinates[0]-buffer..@coordinates[0]+buffer, 
-          :long => @coordinates[1]-buffer..@coordinates[1]+buffer)
+        weather_stations += WeatherStation.where(:lat => @coordinates[0]-buffer..@coordinates[0]+buffer, 
+          :lon => @coordinates[1]-buffer..@coordinates[1]+buffer).to_a
         buffer += 0.1
       end
+      return weather_stations
     end
   end
 

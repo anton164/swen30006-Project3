@@ -29,4 +29,5 @@ class Prediction
       predictor.predict(self)
     }
   end
+
 end

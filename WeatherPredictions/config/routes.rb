@@ -25,9 +25,10 @@ Rails.application.routes.draw do
           :constraints => { :postal_code => /\d{4}/},
           :as => "prediction_by_postal_code",
           :action => "get_by_postal_code"
-        get ':lat/:long/:period', 
-          :as => "prediction_by_lat_long",
-          :action => "get_by_lat_long"
+        get ':lat/:lon/:period', 
+          :constraints => { :lat => /[^\/]+/, :lon => /[^\/]+/ },
+          :as => "prediction_by_lat_lon",
+          :action => "get_by_lat_lon"
       end
     end
   end

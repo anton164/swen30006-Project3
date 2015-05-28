@@ -5,18 +5,20 @@ class PredictionController < ApplicationController
     loc = Location.new(postal_code: params[:postal_code])
     weather_stations = loc.get_weather_stations
     p = Prediction.new(loc.coordinates, weather_stations, params[:period].to_i, [:rainfall])
-    puts "PREDICT NOW"
     p.predict
-    puts "PREDICTED"
+    puts "PREDICTION"
+    puts p.data
     ## Output based on p.data
   end
 
   # GET /weather/prediction/:lat/:long/:period
-  def get_by_lat_long
-    loc = Location.new(coordinates: [params[:lat].to_f, params[:long].to_f])
+  def get_by_lat_lon
+    loc = Location.new(coordinates: [params[:lat].to_f, params[:lon].to_f])
     weather_stations = loc.get_weather_stations
-    p = Prediction.new(loc.coordinates, weather_stations, params[:period], [:rainfall, :temperature, :wind_direction, :wind_speed])
+    p = Prediction.new(loc.coordinates, weather_stations, params[:period].to_i, [:rainfall])
     p.predict
+    puts "PREDICTION"
+    puts p.data
     ## Output based on p.data
   end
 

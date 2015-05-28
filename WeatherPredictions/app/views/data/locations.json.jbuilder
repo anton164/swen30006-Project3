@@ -4,6 +4,6 @@ json.stations do
     json.id(station.id)
     json.lat(station.lat)
     json.lon(station.lon)
-    json.last_update(Time.at(station.measurements.order("timestamp DESC").first.timestamp).strftime("%H:%M%P %d-%m-%Y"))
+    json.last_update(Time.at(station.last_update).strftime("%H:%M%P %d-%m-%Y"))
   end
 end

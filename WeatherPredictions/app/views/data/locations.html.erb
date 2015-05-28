@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<script type="text/javascript">
+  $(document).ready(function() {
+    // Sort by Time per default
+    setTimeout(function() {
+      $("th:contains('Name')").click();
+    }, 250);
+  });
+</script>
+<h4>
+  Weather Stations
+</h4>
+<h6><em>(<strong>hint:</strong> the table is sortable)</em></h6>
+
+<table class="table table-striped table-bordered sortable-theme-bootstrap" data-sortable>
+  <thead>
+    <tr>
+      <th>ID</tD>
+      <th>Name</th>
+      <th>Last updated</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Measurements stored</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stations.each do |station| %>
+      <tr>
+        <td><%= station.id %></td>
+        <td><%= station.name %></td>
+        <td><%= Time.at(station.last_update).strftime("%H:%M%P %d-%m-%Y") %></td>
+        <td><%= station.lat %></td>
+        <td><%= station.lon %></td>
+        <td><%= station.measurements.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

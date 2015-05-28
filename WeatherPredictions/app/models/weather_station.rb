@@ -17,6 +17,10 @@ class WeatherStation < ActiveRecord::Base
     end
   end
 
+  def last_update
+    measurements.order("timestamp DESC").first.timestamp
+  end 
+
   def round_to_hour(time)
     extra = time%3600 
     return time - extra

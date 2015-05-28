@@ -1,5 +1,12 @@
 class PredictionController < ApplicationController
-  # layout "prediction/show"
+
+  # GET /weather/prediction/geocode/:address/:period
+  def lookup_location
+    puts params
+    loc = Location.new(coordinates: Geocoder.search(params[:address])[0].coordinates)
+    get_predictions(loc)
+  end
+
   # GET /weather/prediction/:postal_code/:period
   def get_by_postal_code
     loc = Location.new(postal_code: params[:postal_code])

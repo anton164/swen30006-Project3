@@ -5,6 +5,14 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#lookup").submit(function(e) {
+        window.location.href = "/weather/prediction/geocode/lookup/" + ($("#address").val() || "Melbourne, Australia") + "/" + (parseInt($("#period").val(), 10) || 10);
+        return false;
+      });
+    });
+  </script>
 </head>
 <body>
 <div class="navbar navbar-inverse" role="navigation">
@@ -17,6 +25,25 @@
   </div>
 </div>
 <div class="container">
+  <div class="row">
+    <form id="lookup">
+      <div class="col-md-1">
+        <strong>Period</strong>
+        <div class="input-group">
+          <input id="period" type="text" class="form-control" placeholder="10">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <strong>Address, postal code or lat/long coordinates</strong>
+        <div class="input-group">
+          <input id="address" type="text" class="form-control" placeholder="-37.8152065, 144.963937">
+          <span style="margin-left: 10px;" class="input-group-btn">
+            <input type="submit" class="btn btn-primary">Predict</button>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
   <%= yield %>
 </div>
 

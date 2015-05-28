@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
 <script type="text/javascript">
-  setTimeout("location.reload(true);", 60 * 1000 * <%= @page_refresh_m %>);
   $(document).ready(function() {
-    // Sort by Location per default
+    // Sort by Time per default
     setTimeout(function() {
-    $("th:contains('Time')").click();
-  }, 250);
+      $("th:contains('Time')").click();
+    }, 250);
   });
 </script>
 <h4>

@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
     resources :prediction, :only => [] do
       collection do
+        get 'geocode/lookup/:address/:period',
+          :constraints => { :address => /[^\/]+/ },
+          :as => "prediction_lookup",
+          :action => "lookup_location"
         get ':postal_code/:period', 
           :constraints => { :postal_code => /\d{4}/},
           :as => "prediction_by_postal_code",

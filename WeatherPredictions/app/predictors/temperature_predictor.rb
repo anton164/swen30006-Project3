@@ -1,9 +1,7 @@
-#TemperaturePredictor.rb
-
 class TemperaturePredictor < Predictor
 
-	def initialize _name
-		super _name
+	def initialize 
+		@weather_feature = "temperature"
 	end
 	#issue, each station needs to know how far they are from the lat lon position and besorted from closest to furtherst away
 	def predict _p

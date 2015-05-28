@@ -3,20 +3,36 @@
 class Predictor
 	attr_accessor :weather_feature
 
-	def initialize
-		#@weather_feature = _name
+	def predict prediction	
 	end
 
-	def predict _p	
+	def get_previous_data prediction
+		data_points = []
+		prediction.stations.each do |station|
+			station_points = []
+			station.measurements.each do |measurement|
+				station_points << {"data" => measurement.send(@weather_feature), "timestamp" => measurement.timestamp}
+			end
+			data_points << station_points
+		end
+		return data_points
+	end
+
+	def time_probability time_until
+		return 0.99
+	end
+
+	def distance_probability distance_km
+		return 0.99
 	end
 
 	private 
 
-	def calc_simple_regress arr_points
+	def calc_simple_regression arr_points
 		x_axis = Array.new#(arr_points+1).size.times.collect{|i| i}.pop.to_scale
 		y_axis = Array.new
 		arr_points.each do |point|
-			x_axis << point["time_stamp"]
+			x_axis << point["timestamp"]
 			y_axis << point["data"]
 		end
 		#points_sv = arr_points.to_scale

@@ -11,4 +11,5 @@ scheduler.every(UPDATE_INTERVAL, :first_in => 0.5) do
   puts "Parsing from BOM..."
   parser.parse_measurements
   puts "Successfully parsed measurements from BOM"
+  puts "Will parse again in " + UPDATE_INTERVAL
 end

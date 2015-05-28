@@ -12,7 +12,7 @@ namespace :app do
         lat = row.css("td:eq(4)").text.gsub("Lat: ", "").strip!.to_f
         lon = row.css("td:eq(5)").text.gsub("Lon: ", "").strip!.to_f
         postal_code = Location.find_postal_code(lat, lon)
-        if not postal_code.nil?
+        if not postal_code.nil? and WeatherStation.where(name: th.text).size == 0
           WeatherStation.create({ 
             'name' => th.text,
             'lat' => lat,

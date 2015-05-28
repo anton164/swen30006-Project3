@@ -4,7 +4,7 @@ class PredictorFactory
   def self.create feature
     case feature
     when :rainfall
-      return RainFallPredictor.new
+      return RainfallPredictor.new
     when :temperature
       return TemperaturePredictor.new
     when :wind_direction

@@ -5,10 +5,10 @@ class Location
   def initialize (postal_code: nil, coordinates: nil)
     if not coordinates.nil?
       @coordinates = coordinates
-      @postal_code = find_postal_code(coordinates[0], coordinates[1])
+      @postal_code = self.class.find_postal_code(coordinates[0], coordinates[1])
     elsif not postal_code.nil?
       @postal_code = postal_code
-      @coordinates = find_coordinates(postal_code)
+      @coordinates = self.class.find_coordinates(postal_code)
     end
   end
 

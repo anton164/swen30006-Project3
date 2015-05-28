@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20150525062127) do
     t.float    "wind_direction"
     t.float    "wind_speed"
     t.float    "temperature"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "weather_station_id"
     t.float    "precipitation"
   end

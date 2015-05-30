@@ -57,3 +57,5 @@ group :development, :test do
 end
 
 gem 'tzinfo-data'
+
+gem 'coffee-script-source', '1.8.0'

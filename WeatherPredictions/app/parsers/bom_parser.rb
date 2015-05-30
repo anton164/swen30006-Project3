@@ -50,21 +50,21 @@ class BOMParser
   end
 
   def parse_measurements
-    WeatherStation.all.each{|station|
+    WeatherStation.all.each |station| do
       doc = JSON.parse(open(station.json_url).read)
       data = doc["observations"]["data"]
       # Reverse to start from the oldest point if we don't have any points from today
       if station.measurements.where(timestamp: (Time.now.to_date.to_time.to_i)..Time.now.to_i).empty?
         data = data.to_a.reverse
       end
-      data.each { |point|
+      data.each |point| do
         puts point
         timestamp = Time.parse(point["local_date_time_full"]).to_i
         if station.measurements.where(timestamp: timestamp).empty?
           precip = calculate_rainfall(station, point["rain_trace"].to_f, timestamp)
           station.measurements.create(timestamp: timestamp, precipitation: precip, temperature: point["air_temp"].to_f, wind_direction: get_degree(point["wind_dir"]), wind_speed: point["wind_spd_kmh"].to_f)
         end
-      }
-    }
+      end
+    end
   end
 end

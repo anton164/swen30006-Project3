@@ -14,7 +14,21 @@
       });
       $("#past_data").submit(function(event) {
         event.stopPropagation();
-        window.location.href = "/weather/data/" + ($("#query").val() || "3045") + "/" + ($("#date").val() || "30-05-2015");
+        var date = $("#date").val();
+        if (!date) {
+          var today = new Date();
+          var d = today.getDate();
+          var m = today.getMonth()+1;
+          var y = today.getFullYear();
+          if (d < 10) {
+            d = "0" + d;
+          }
+          if (m < 10) {
+            m = "0" + m;
+          }
+          date = d + "-" + m + "-" + y;
+        }
+        window.location.href = "/weather/data/" + ($("#query").val() || "3045") + "/" + date;
         return false;
       });
     });

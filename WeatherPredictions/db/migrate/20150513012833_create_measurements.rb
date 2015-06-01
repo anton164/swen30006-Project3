@@ -2,7 +2,7 @@ class CreateMeasurements < ActiveRecord::Migration
   def change
     create_table :measurements do |t|
       t.string :condition
-      t.datetime :timestamp
+      t.integer :timestamp
       t.float :precitipation
       t.float :wind_direction
       t.float :wind_speed

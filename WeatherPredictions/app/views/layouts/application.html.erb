@@ -7,6 +7,18 @@
   <%= csrf_meta_tags %>
   <script type="text/javascript">
     $(document).ready(function() {
+      var today = new Date();
+      var d = today.getDate();
+      var m = today.getMonth()+1;
+      var y = today.getFullYear();
+      if (d < 10) {
+        d = "0" + d;
+      }
+      if (m < 10) {
+        m = "0" + m;
+      }
+      var todayFormatted = d + "-" + m + "-" + y;
+      $("#date").attr('placeholder', todayFormatted);
       $("#lookup").submit(function(event) {
         event.stopPropagation();
         window.location.href = "/weather/prediction/geocode/lookup/" + ($("#address").val() || "Melbourne, Australia") + "/" + (parseInt($("#period").val(), 10) || 10);
@@ -14,21 +26,7 @@
       });
       $("#past_data").submit(function(event) {
         event.stopPropagation();
-        var date = $("#date").val();
-        if (!date) {
-          var today = new Date();
-          var d = today.getDate();
-          var m = today.getMonth()+1;
-          var y = today.getFullYear();
-          if (d < 10) {
-            d = "0" + d;
-          }
-          if (m < 10) {
-            m = "0" + m;
-          }
-          date = d + "-" + m + "-" + y;
-        }
-        window.location.href = "/weather/data/" + ($("#query").val() || "3045") + "/" + date;
+        window.location.href = "/weather/data/" + ($("#query").val() || "3045") + "/" + ($("#date").val() || todayFormatted);
         return false;
       });
     });
@@ -77,12 +75,12 @@
     <form id="past_data">
       <div class="col-md-2">
         <strong>Date</strong>
-        <input id="date" type="text" class="form-control" placeholder="03-06-2015">
+        <input id="date" type="text" class="form-control">
       </div>
       <div class="col-md-4">
         <strong>ID or Postal Code</strong>
         <div class="input-group">
-          <input id="query" type="text" class="form-control" placeholder="56/3045">
+          <input id="query" type="text" class="form-control" placeholder="3045">
           <span style="margin-left: 10px;" class="input-group-btn">
             <input type="submit" class="btn btn-primary" value="Lookup" />
           </span>

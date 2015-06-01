@@ -9,9 +9,14 @@
 
 
 ### Installation instructions
-- On setting up the environment run the following:
-rake db:migrate
-rake app:create_weather_stations # This will take a little while
-rails s
+- When setting up the application run the following:
+
+  bundle install
+  rake db:create
+  rake db:migrate
+  rake app:create_weather_stations -- This will take a little while
+  rails s
 
 - Wait for the server to parse the first measurements, then you can access the routes specified in the spec
+
+All HTML routes are avilable from "http://localhost:3000/weather/locations"

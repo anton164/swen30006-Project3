@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20150525062127) do
 
   create_table "measurements", force: :cascade do |t|
     t.string   "condition"
-    t.integer "timestamp"
+    t.integer  "timestamp"
     t.float    "wind_direction"
     t.float    "wind_speed"
     t.float    "temperature"

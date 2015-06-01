@@ -29,7 +29,7 @@
       <tr class="station" id="<%= station.id %>">
         <td><%= station.id %></td>
         <td class="name"><%= station.name %></td>
-        <td class="last_update"><%= Time.at(station.last_measurement.timestamp).strftime("%H:%M%P %d-%m-%Y") %></td>
+        <td class="last_update"><%= station.last_measurement.nil? ? "Never updated" : Time.at(station.last_measurement.timestamp).strftime("%H:%M%P %d-%m-%Y") %></td>
         <td class="latitude"><%= station.lat %></td>
         <td class="longitude"><%= station.lon %></td>
         <td class="measurement_count"><%= station.measurements.count %></td>

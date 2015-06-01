@@ -12,7 +12,7 @@
 </h4>
 <h6><em>(<strong>hint:</strong> the tables are sortable)</em></h6>
 <% @stations.each do |station| %>
-<h5>Location: <%= station.name %> (id: <%= station.id %>) - last updated at <%= Time.at(station.last_measurement.timestamp).strftime("%H:%M%P %d-%m-%Y") %></h5>
+<h5>Location: <%= station.name %> (id: <%= station.id %>) - <%= station.last_measurement.nil? ? ("last updated at " + Time.at(station.last_measurement.timestamp).strftime("%H:%M%P %d-%m-%Y")) : "never updated"%></h5>
   <table id="<%= station.id %>" class="table table-striped table-bordered sortable-theme-bootstrap" data-sortable>
     <thead>
       <tr>

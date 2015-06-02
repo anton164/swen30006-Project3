@@ -27,7 +27,7 @@
       <% if station.get_date_measurements(@date).size == 0 %>
         <tr><td colspan="5">No measurements found at this date.</td></tr>
       <% end %>
-      <% station.get_date_measurements(@date).each do |measurement| %>
+      <% station.get_date_measurements(@date).sort!{|x,y| y.timestamp <=> x.timestamp}.each do |measurement| %>
         <tr class="measurement">
           <td class="time"><%= Time.at(measurement.timestamp).strftime("%H:%M%P %d-%m-%Y") %></td>
           <td class="precipitation"><%= measurement.precipitation.round(1) %> mm</td>

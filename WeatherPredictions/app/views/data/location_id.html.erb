@@ -25,9 +25,9 @@
     <% if @measurements.size == 0 %>
       <tr><td colspan="5">No measurements found at this date.</td></tr>
     <% end %>
-    <% @measurements.each do |measurement| %>
+    <% @measurements.sort!{|x,y| y.timestamp <=> x.timestamp}.each do |measurement| %>
       <tr class="measurement">
-        <td class="time"><%= Time.at(measurement.timestamp).strftime("%H:%M%P %d-%m-%Y") %></td>
+        <td class="time"><%= Time.at(measurement.timestamp).strftime("%H:%M %d-%m-%Y") %></td>
         <td class="precipitation"><%= measurement.precipitation.round(1) %> mm</td>
         <td class="temperature"><%= measurement.temperature %> °C</td>
         <td class="wind_direction"><i class="fa fa-long-arrow-up wind-arrow" style="transform: rotate(<%= measurement.wind_direction.round(1)%>deg)"></i></td>

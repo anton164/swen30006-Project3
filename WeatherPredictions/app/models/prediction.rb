@@ -12,11 +12,12 @@ class Prediction
       "predictions" => {}
     }
     @now = Time.new.to_i
-    (0..10).each { |i|
-      time_until = i * period
+    t = @period / 10
+    (0..t).each do |i|
+      time_until = i * 10
       @data["predictions"][time_until] = Hash.new
       # To-DO: populate "time" as well
-    }
+    end
     @coordinates = coordinates
     @predictors = []
     predictors.each { |predictor| 

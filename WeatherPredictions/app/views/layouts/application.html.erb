@@ -37,7 +37,7 @@
   <div class="container">
     <div class="navbar-header">
       <div class="navbar-brand">
-        Authors: Anton, Adam, Theko and Marik
+        Authors: Anton, Adam and Theko
       </div>
     </div>
     <div class="navbar-collapse collapse" id="navbar-main">
@@ -54,7 +54,7 @@
         <h4>Predict Weather</h4>
       </div>  
       <div class="col-md-6">
-        <h4>Lookup past measurements</h4>
+        <h4>Lookup Past Measurements</h4>
       </div>  
       <div class="col-md-1">
         <strong>Period</strong>
@@ -63,9 +63,9 @@
         </div>
       </div>
       <div class="col-md-5">
-        <strong>Address or lat/long coordinates</strong>
+        <strong>Address or Coordinates</strong>
         <div class="input-group">
-          <input id="address" type="text" class="form-control" placeholder="-37.8152065, 144.963937">
+          <input id="address" type="text" class="form-control" placeholder="3054, VIC, Australia or -37.815, 144.963">
           <span style="margin-left: 10px;" class="input-group-btn">
             <input type="submit" class="btn btn-primary" value="Predict" />
           </span>
@@ -75,12 +75,12 @@
     <form id="past_data">
       <div class="col-md-2">
         <strong>Date</strong>
-        <input id="date" type="text" class="form-control">
+        <input id="date" type="text" class="form-control" placeholder="#/{todayFormatted}">
       </div>
       <div class="col-md-4">
         <strong>ID or Postal Code</strong>
         <div class="input-group">
-          <input id="query" type="text" class="form-control" placeholder="3045">
+          <input id="query" type="text" class="form-control" placeholder="01 or 3045">
           <span style="margin-left: 10px;" class="input-group-btn">
             <input type="submit" class="btn btn-primary" value="Lookup" />
           </span>

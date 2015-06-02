@@ -10,16 +10,15 @@
 <h4>
   Prediction for (<%= @loc.coordinates[0].to_s + ", " + @loc.coordinates[1].to_s %>) in postal code <%= @loc.postal_code %>, <%=@loc.city %></br>
 </h4>
-<h6><em>(<strong>hint:</strong> the table is sortable)</em></h6>
 
 <table class="table table-striped table-bordered sortable-theme-bootstrap" data-sortable>
   <thead>
     <tr>
       <th>Time</th>
-      <th>Rainfall (60 min)</th>
+      <th>Rainfall (in last hour)</th>
       <th>Temperature</th>
-      <th>Wind direction</th>
-      <th>Wind speed (km/h)</th>
+      <th>Wind direction (N is up)</th>
+      <th>Wind speed</th>
     </tr>
   </thead>
 
@@ -28,12 +27,12 @@
       <tr>
         <td class="time"><%= Time.at(@now + time_until * 60).to_formatted_s(:short) %></td>
         <td class="precipitation"><%= prediction["precipitation"][:value].round(1).to_s + 
-                "mm (" + prediction["precipitation"][:probability].round(2).to_s + "%)" %></td>
+                " mm (" + prediction["precipitation"][:probability].round(2).to_s + "%)" %></td>
         <td class="temperature"><%= prediction["temperature"][:value].round(1).to_s + 
-                "C (" + prediction["temperature"][:probability].round(2).to_s + "%)" %></td>
+                " °C (" + prediction["temperature"][:probability].round(2).to_s + "%)" %></td>
         <td class="wind_direction"><i class="fa fa-long-arrow-up wind-arrow" style="transform: rotate(<%= prediction["wind_direction"][:value].round(1)%>deg)"></i>(<%= prediction["wind_direction"][:probability].round(2)%>%)</td>
         <td class="wind_speed"><%= prediction["wind_speed"][:value].round(1).to_s + 
-                "km/h (" + prediction["wind_speed"][:probability].round(2).to_s + "%)" %></td>
+                " km/h (" + prediction["wind_speed"][:probability].round(2).to_s + "%)" %></td>
       </tr>
     <% end %>
   </tbody>

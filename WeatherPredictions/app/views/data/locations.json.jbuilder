@@ -1,6 +1,6 @@
 json.date(@date)
 json.stations do
-  json.array!(@locations) do |station|
+  json.array!(@stations) do |station|
     json.id(station.id)
     json.lat(station.lat)
     json.lon(station.lon)

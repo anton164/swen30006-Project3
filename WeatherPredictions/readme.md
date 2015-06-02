@@ -19,4 +19,5 @@
 
 **Wait for the server to parse the first measurements, then you can access the routes specified in the spec**
 
-All HTML routes are avilable from "http://localhost:3000/weather/locations"
+All HTML routes are avilable from "http://localhost:3000/weather/locations"  
+The JSON format of the data can be accessed by appending .json to the URL, e.g. "http://localhost:3000/weather/locations.json"
